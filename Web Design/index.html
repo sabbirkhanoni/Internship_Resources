@@ -1,44 +1,97 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
+  <head>
+    <title>Registration Form</title>
+  </head>
 
-<head>
-    <meta charset="UTF-8">
-    <title>Semantic HTML</title>
-</head>
+  <body>
+    <h1>Registration</h1>
 
-<body>
+    <form>
+      <label for="name">Name</label>
 
-<header>
-    <h1>My Portfolio</h1>
-</header>
+      <br />
 
-<nav>
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Projects</a>
-    <a href="#">Contact</a>
-</nav>
+      <input type="text" id="name" placeholder="Enter your name" />
 
-<main>
-    <section>
-        <h2>About Me</h2>
-        <p>I am learning HTML.</p>
-    </section>
-    <section>
-        <h2>Skills</h2>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-        </ul>
-    </section>
-    <article>
-        <h2>Latest Blog</h2>
-        <p>Today I learned Semantic HTML.</p>
-    </article>
-</main>
-<footer>
-<p>© 2026 Sabbir Khan Oni</p>
-</footer>
-</body>
+      <br /><br />
+
+      <label for="email">Email</label>
+
+      <br />
+
+      <input type="email" id="email" placeholder="Enter email" />
+
+      <br /><br />
+
+      <label>Password</label>
+
+      <br />
+
+      <input type="password" />
+
+      <br /><br />
+
+      <label>Gender</label>
+
+      <br />
+
+      <label>
+        <input type="radio" name="gender" />
+        Male
+      </label>
+
+      <label>
+        <input type="radio" name="gender" />
+        Female
+      </label>
+
+      <br /><br />
+
+      <label>Skills</label>
+
+      <br />
+
+      <label>
+        <input type="checkbox" />
+        HTML
+      </label>
+
+      <label>
+        <input type="checkbox" />
+        CSS
+      </label>
+
+      <label>
+        <input type="checkbox" />
+        JavaScript
+      </label>
+
+      <br /><br />
+
+      <label>Address</label>
+
+      <br />
+
+      <textarea rows="4"></textarea>
+
+      <br /><br />
+
+      <label>City</label>
+
+      <br />
+
+      <select>
+        <option>Dhaka</option>
+
+        <option>Khulna</option>
+
+        <option>Sylhet</option>
+      </select>
+
+      <br /><br />
+
+      <button type="submit">Register</button>
+    </form>
+  </body>
 </html>

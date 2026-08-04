@@ -1,14 +1,12 @@
 import React from 'react'
-import LoginPage from './LoginPage'
 import RegistrationForm from '../components/RegistrationForm'
 
-const Home = () => {
+const RegistrationPage = () => {
   return (
     <div>
-      <LoginPage />
       <RegistrationForm />
     </div>
   )
 }
 
-export default Home
+export default RegistrationPage

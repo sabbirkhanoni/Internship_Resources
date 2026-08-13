@@ -1,13 +1,15 @@
+import { MessageRole } from "../../types/chat";
+
 interface ChatMessageProps {
-  type: "ai" | "user";
-  message: string;
+  role: MessageRole;
+  content: string;
 }
 
 function ChatMessage({
-  type,
-  message,
+  role,
+  content,
 }: ChatMessageProps) {
-  const isUser = type === "user";
+  const isUser = role === "user";
 
   return (
     <div
@@ -29,13 +31,13 @@ function ChatMessage({
             </div>
 
             <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
-              Find AI
+              WhereWasIt AI
             </span>
           </div>
         )}
 
         <p className="text-sm leading-6">
-          {message}
+          {content}
         </p>
       </div>
     </div>

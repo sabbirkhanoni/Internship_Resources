@@ -20,7 +20,7 @@ const Footer = () => {
               />
 
               <span className="text-sm font-bold">
-                Lost & Found
+                Find
                 <span className="text-blue-600"> AI</span>
               </span>
             </Link>

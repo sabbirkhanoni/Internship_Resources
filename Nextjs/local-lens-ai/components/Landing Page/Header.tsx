@@ -16,7 +16,7 @@ const Header = () => {
               />
 
             <span className="text-xl font-bold tracking-tight">
-              Lost & Found
+              Find
               <span className="text-blue-600"> AI</span>
             </span>
           </Link>

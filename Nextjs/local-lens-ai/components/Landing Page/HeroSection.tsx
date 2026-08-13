@@ -15,28 +15,28 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto text-center">
 
           {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold mb-7 animate-bounce">
+          <div className="inline-flex items-center gap-2 px-3.5 py-2 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-semibold animate-bounce">
             <Sparkles className="w-3.5 h-3.5" />
             AI-powered local intelligence
           </div>
 
           {/* Heading */}
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-bold tracking-tight leading-[1.08] text-gray-950">
+          <h1 className="text-4xl sm:text-5xl w-full lg:text-8xl font-bold tracking-tight leading-[1.08] text-gray-950">
             See your surroundings
-            <span className="block text-blue-600">
+            <span className="block text-blue-600 lg:text-4xl">
               through a smarter lens.
             </span>
           </h1>
 
           {/* Description */}
-          <p className="max-w-2xl mx-auto mt-6 text-base sm:text-lg leading-8 text-gray-500">
+          <p className="max-w-2xl mx-auto mt-3 text-base sm:text-lg leading-8 text-gray-500">
             Local Lens AI helps you understand places around you,
             discover useful local insights, and make smarter decisions
             wherever you go.
           </p>
 
           {/* CTA */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-9">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mt-5">
 
             <Link
               href="/registration"
@@ -56,7 +56,7 @@ const HeroSection = () => {
           </div>
 
           {/* Trust */}
-          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mt-8 text-xs text-gray-400">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3 mt-4 text-xs text-gray-400">
 
             <div className="flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5 text-green-500" />
@@ -77,7 +77,7 @@ const HeroSection = () => {
         </div>
 
         {/* Hero Preview */}
-        <div className="relative max-w-5xl mx-auto mt-16">
+        <div className="relative max-w-5xl mx-auto mt-10">
 
           <div className="absolute inset-0 bg-blue-200 blur-3xl opacity-30 rounded-full" />
 

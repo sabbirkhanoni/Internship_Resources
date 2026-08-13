@@ -46,7 +46,7 @@ const Header = () => {
             </Link>
 
             <Link
-              href="/registration"
+              href="/dashboard"
               className="h-10 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold flex items-center gap-2 shadow-lg shadow-blue-200 transition"
             >
               Get Started

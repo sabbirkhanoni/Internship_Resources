@@ -12,9 +12,9 @@ import type { ChatMessage as ChatMessageType } from "../../types/chat";
 
 
 interface InvestigationPanelProps {
-  messages: ChatMessageType[];
-  isAiTyping: boolean;
-  onSendMessage: (message: string) => void;
+    messages: ChatMessageType[];
+    isAiTyping: boolean;
+    onSendMessage: (message: string) => void;
 }
 
 function InvestigationPanel({
@@ -44,32 +44,17 @@ function InvestigationPanel({
     return (
         <aside className="flex h-full min-h-0 flex-col border-l border-zinc-200 bg-white">
             {/* Header */}
-            <div className="border-b border-zinc-100 px-6 py-5">
+            <div className="border-b border-zinc-100 px-6 py-3">
                 <div className="flex items-start justify-between">
                     <div>
-                        <div className="flex items-center gap-2">
-                            <span className="h-2 w-2 rounded-full bg-emerald-500" />
-
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
-                                Investigation Active
-                            </span>
-                        </div>
-
-                        <h2 className="mt-2 text-xl font-semibold tracking-tight">
+                        <h2 className="text-sm font-semibold tracking-tight">
                             Let's find that place.
                         </h2>
                     </div>
-
-                    <button
-                        type="button"
-                        className="flex h-9 w-9 items-center justify-center rounded-lg bg-zinc-100 text-zinc-500"
-                    >
-                        ⋯
-                    </button>
                 </div>
 
-                <div className="mt-5 flex items-center gap-3">
-                    <div className="h-1.5 flex-1 overflow-hidden rounded-full bg-zinc-100">
+                <div className="flex items-center gap-3">
+                    <div className="h-1 flex-1 overflow-hidden rounded-full bg-zinc-100">
                         <div className="h-full w-[20%] rounded-full bg-zinc-900 transition-all duration-500" />
                     </div>
 

@@ -52,9 +52,8 @@ function createMarkerIcon(
           width: 42px;
           height: 42px;
           border-radius: 9999px;
-          background: ${
-            active ? "#18181b" : "#71717a"
-          };
+          background: ${active ? "#18181b" : "#71717a"
+      };
           border: 3px solid white;
           box-shadow: 0 4px 12px rgba(0,0,0,0.25);
           display: flex;

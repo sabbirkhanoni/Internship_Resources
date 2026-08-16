@@ -5,7 +5,7 @@ import React from "react";
 
 function DashHeader() {
   return (
-    <header className="flex h-[72px] items-center justify-between border-b border-zinc-200 bg-white px-5 lg:px-8">
+    <header className="flex h-[60px] items-center justify-between border-b border-zinc-200 bg-white px-5 lg:px-8">
       {/* Logo */}
       <div className="flex items-center gap-3">
 

@@ -6,6 +6,7 @@ import ChatInput from "@/components/Dashboard/ChatInput";
 import DashHeader from "@/components/Dashboard/DashHeader";
 import InvestigationPanel from "@/components/Dashboard/InvestigationPanel";
 import { useInvestigationChat } from "@/hooks/useInvestigationChat";
+import type { Candidate } from "@/types/investigation";
 
 const MapPanel = dynamic(
   () => import("@/components/Dashboard/MapPanel"),
@@ -28,15 +29,49 @@ function Dashboard() {
     sendMessage,
   } = useInvestigationChat();
 
+
+  const candidates: Candidate[] = [
+    {
+      id: "hatirjheel",
+      rank: 1,
+      name: "Hatirjheel",
+      location: "Dhaka, Bangladesh",
+      position: [23.7772, 90.4125],
+      match: 87,
+      clues: ["Lake", "Bridge", "Urban"],
+      featured: true,
+    },
+    {
+      id: "dhanmondi-lake",
+      rank: 2,
+      name: "Dhanmondi Lake",
+      location: "Dhaka, Bangladesh",
+      position: [23.7465, 90.376],
+      match: 72,
+      clues: ["Lake", "Urban"],
+      featured: false,
+    },
+    {
+      id: "gulshan-lake",
+      rank: 3,
+      name: "Gulshan Lake",
+      location: "Dhaka, Bangladesh",
+      position: [23.7937, 90.4152],
+      match: 61,
+      clues: ["Lake", "Urban"],
+      featured: false,
+    },
+  ];
+
   return (
     <div className="h-screen overflow-hidden bg-[#f7f7f5] text-zinc-900">
       <DashHeader />
 
       <main className="relative h-[calc(100vh-72px)]">
         <div className="grid h-full grid-cols-1 lg:grid-cols-[1.35fr_1fr]">
-          
+
           {/* Real Map */}
-          <MapPanel />
+          <MapPanel candidates={candidates} />
 
           {/* AI Panel */}
           <div className="relative min-h-0">

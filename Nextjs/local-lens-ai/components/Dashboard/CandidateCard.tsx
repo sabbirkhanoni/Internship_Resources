@@ -1,11 +1,4 @@
-export interface Candidate {
-    rank: number;
-    name: string;
-    location: string;
-    match: number;
-    clues: string[];
-    featured: boolean;
-}
+import { Candidate } from "@/types/investigation";
 
 interface CandidateCardProps {
     candidate: Candidate;

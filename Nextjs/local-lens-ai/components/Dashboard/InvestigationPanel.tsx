@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import ChatMessage from "./ChatMessage";
 import QuickReplies from "./QuickReplies";
@@ -9,6 +9,7 @@ import CandidateList from "./CandidateList";
 import TypingIndicator from "./TypingIndicator";
 import { useInvestigationChat } from "../../hooks/useInvestigationChat";
 import type { ChatMessage as ChatMessageType } from "../../types/chat";
+import type { Clue, Candidate } from "../../types/investigation";
 
 
 interface InvestigationPanelProps {
@@ -20,6 +21,63 @@ interface InvestigationPanelProps {
 function InvestigationPanel({
     onSendMessage,
 }: InvestigationPanelProps) {
+
+    const [clues, setClues] = useState<Clue[]>([
+        {
+            id: "lake",
+            label: "Large lake",
+            confirmed: true,
+        },
+        {
+            id: "bridge",
+            label: "Large bridge",
+            confirmed: true,
+        },
+        {
+            id: "urban",
+            label: "Urban area",
+            confirmed: true,
+        },
+        {
+            id: "building",
+            label: "Nearby building",
+            confirmed: false,
+        },
+    ]);
+
+    const [candidates, setCandidates] = useState<Candidate[]>([
+        {
+            id: "hatirjheel",
+            rank: 1,
+            name: "Hatirjheel",
+            location: "Dhaka, Bangladesh",
+            position: [23.7772, 90.4125],
+            match: 87,
+            clues: ["Lake", "Bridge", "Urban"],
+            featured: true,
+        },
+        {
+            id: "dhanmondi-lake",
+            rank: 2,
+            name: "Dhanmondi Lake",
+            location: "Dhaka, Bangladesh",
+            position: [23.7465, 90.376],
+            match: 72,
+            clues: ["Lake", "Urban"],
+            featured: false,
+        },
+        {
+            id: "gulshan-lake",
+            rank: 3,
+            name: "Gulshan Lake",
+            location: "Dhaka, Bangladesh",
+            position: [23.7937, 90.4152],
+            match: 61,
+            clues: ["Lake", "Urban"],
+            featured: false,
+        },
+    ]);
+
     const {
         messages,
         isAiTyping,
@@ -95,9 +153,9 @@ function InvestigationPanel({
                     <div ref={bottomRef} />
                 </div>
 
-                <ClueList />
+                <ClueList clues={clues} />
 
-                <CandidateList />
+                <CandidateList candidates={candidates} />
             </div>
         </aside>
     );

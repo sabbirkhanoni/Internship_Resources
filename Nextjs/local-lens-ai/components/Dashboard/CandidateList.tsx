@@ -1,35 +1,13 @@
-import CandidateCard, {
-  Candidate,
-} from "./CandidateCard";
+import type { Candidate } from "../../types/investigation";
+import CandidateCard from "./CandidateCard";
 
-function CandidateList() {
-  const candidates: Candidate[] = [
-    {
-      rank: 1,
-      name: "Hatirjheel",
-      location: "Dhaka, Bangladesh",
-      match: 87,
-      clues: ["Lake", "Bridge", "Urban"],
-      featured: true,
-    },
-    {
-      rank: 2,
-      name: "Dhanmondi Lake",
-      location: "Dhaka, Bangladesh",
-      match: 72,
-      clues: ["Lake", "Urban"],
-      featured: false,
-    },
-    {
-      rank: 3,
-      name: "Gulshan Lake",
-      location: "Dhaka, Bangladesh",
-      match: 61,
-      clues: ["Lake", "Urban"],
-      featured: false,
-    },
-  ];
+interface CandidateListProps {
+  candidates: Candidate[];
+}
 
+function CandidateList({
+  candidates,
+}: CandidateListProps) {
   return (
     <section className="mt-8 border-t border-zinc-100 pt-6">
       <div className="mb-4">
@@ -45,7 +23,7 @@ function CandidateList() {
       <div className="space-y-3">
         {candidates.map((candidate) => (
           <CandidateCard
-            key={candidate.name}
+            key={candidate.id}
             candidate={candidate}
           />
         ))}

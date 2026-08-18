@@ -2,7 +2,7 @@
 
 import { useCallback, useState } from "react";
 import type { ChatMessage } from "../types/chat";
-import type { Clue } from "../types/investigation";
+import type { Candidate, Clue } from "../types/investigation";
 
 const initialMessages: ChatMessage[] = [
   {
@@ -16,9 +16,13 @@ const initialMessages: ChatMessage[] = [
 interface InvestigationResponse {
   reply: string;
   clues: Clue[];
+  candidates: Candidate[];
 }
 
-export function useInvestigationChat( setClues: React.Dispatch<React.SetStateAction<Clue[]>>) {
+export function useInvestigationChat(
+  setClues: React.Dispatch<React.SetStateAction<Clue[]>>,
+  setCandidates: React.Dispatch<React.SetStateAction<Candidate[]>>
+) {
   const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
   const [isAiTyping, setIsAiTyping] = useState(false);
 
@@ -75,6 +79,8 @@ export function useInvestigationChat( setClues: React.Dispatch<React.SetStateAct
           return [ ...previousClues, ...newClues ];
         });
 
+        setCandidates(data.candidates.slice(0, 5));
+
         const aiMessage: ChatMessage = {
           id: crypto.randomUUID(),
           role: "ai",
@@ -101,7 +107,7 @@ export function useInvestigationChat( setClues: React.Dispatch<React.SetStateAct
         setIsAiTyping(false);
       }
     },
-    [isAiTyping, setClues]
+    [isAiTyping, setCandidates, setClues]
   );
 
   return { messages, isAiTyping, sendMessage };

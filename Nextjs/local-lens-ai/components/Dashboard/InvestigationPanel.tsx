@@ -67,7 +67,9 @@ function InvestigationPanel({ messages, isAiTyping, onSendMessage, clues, candid
 
         {/* Collected Clues */}
         {clues.length > 0 && (
+          <div className="mt-8 border-t border-zinc-200 bg-white">
           <ClueList clues={clues} />
+          </div>
         )}
 
         {/* Possible Matches */}

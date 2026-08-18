@@ -6,14 +6,14 @@ interface ClueListProps {
 
 function ClueList({ clues }: ClueListProps) {
   return (
-    <section className="mt-8 border-t border-zinc-100 pt-6">
-      <div className="mb-3">
-        <h3 className="text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-400">
+    <section className="mt-2 border-t border-zinc-100 pt-6">
+      <div className="mb-1">
+        <h3 className="text-[10px] font-semibold uppercase text-zinc-400">
           Collected Clues
         </h3>
       </div>
 
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2 mb-2">
         {clues.map((clue) => (
           <div
             key={clue.id}

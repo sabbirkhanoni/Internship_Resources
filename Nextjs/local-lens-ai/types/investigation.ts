@@ -6,13 +6,13 @@ export interface Clue {
 
 export interface Candidate {
   id: string;
-  rank: number;
   name: string;
   location: string;
   position: [number, number];
-  match: number;
   clues: string[];
-  featured: boolean;
+  rank?: number;
+  match?: number;
+  featured?: boolean;
 }
 
 export interface InvestigationState {

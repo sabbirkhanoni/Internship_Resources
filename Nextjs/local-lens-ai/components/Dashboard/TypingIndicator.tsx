@@ -10,7 +10,7 @@ function TypingIndicator() {
           </div>
 
           <span className="text-[10px] font-semibold uppercase tracking-wider text-zinc-400">
-            WhereWasIt AI
+            Find AI
           </span>
         </div>
 

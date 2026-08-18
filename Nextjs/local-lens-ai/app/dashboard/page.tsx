@@ -1,17 +1,11 @@
 "use client";
-
 import { useState } from "react";
 import dynamic from "next/dynamic";
-
 import ChatInput from "@/components/Dashboard/ChatInput";
 import DashHeader from "@/components/Dashboard/DashHeader";
 import InvestigationPanel from "@/components/Dashboard/InvestigationPanel";
 import { useInvestigationChat } from "@/hooks/useInvestigationChat";
-
-import type {
-  Candidate,
-  Clue,
-} from "@/types/investigation";
+import type { Candidate, Clue } from "@/types/investigation";
 
 const MapPanel = dynamic(
   () => import("@/components/Dashboard/MapPanel"),
@@ -65,11 +59,7 @@ function Dashboard() {
     },
   ];
 
-  const {
-    messages,
-    isAiTyping,
-    sendMessage,
-  } = useInvestigationChat(setClues);
+  const { messages, isAiTyping, sendMessage } = useInvestigationChat(setClues);
 
   return (
     <div className="h-screen overflow-hidden bg-[#f7f7f5] text-zinc-900">

@@ -18,14 +18,9 @@ interface InvestigationResponse {
   clues: Clue[];
 }
 
-export function useInvestigationChat(
-  setClues: React.Dispatch<React.SetStateAction<Clue[]>>
-) {
-  const [messages, setMessages] =
-    useState<ChatMessage[]>(initialMessages);
-
-  const [isAiTyping, setIsAiTyping] =
-    useState(false);
+export function useInvestigationChat( setClues: React.Dispatch<React.SetStateAction<Clue[]>>) {
+  const [messages, setMessages] = useState<ChatMessage[]>(initialMessages);
+  const [isAiTyping, setIsAiTyping] = useState(false);
 
   const sendMessage = useCallback(
     async (content: string) => {
@@ -42,10 +37,8 @@ export function useInvestigationChat(
       };
 
       setMessages((previous) => [
-        ...previous,
-        userMessage,
+        ...previous, userMessage,
       ]);
-
       setIsAiTyping(true);
 
       try {
@@ -68,8 +61,7 @@ export function useInvestigationChat(
           );
         }
 
-        const data: InvestigationResponse =
-          await response.json();
+        const data: InvestigationResponse = await response.json();
 
         setClues((previousClues) => {
           const existingIds = new Set(
@@ -80,10 +72,7 @@ export function useInvestigationChat(
             (clue) => !existingIds.has(clue.id)
           );
 
-          return [
-            ...previousClues,
-            ...newClues,
-          ];
+          return [ ...previousClues, ...newClues ];
         });
 
         const aiMessage: ChatMessage = {
@@ -93,8 +82,7 @@ export function useInvestigationChat(
         };
 
         setMessages((previous) => [
-          ...previous,
-          aiMessage,
+          ...previous, aiMessage,
         ]);
       } catch (error) {
         console.error(error);
@@ -107,8 +95,7 @@ export function useInvestigationChat(
         };
 
         setMessages((previous) => [
-          ...previous,
-          errorMessage,
+          ...previous, errorMessage,
         ]);
       } finally {
         setIsAiTyping(false);
@@ -117,9 +104,5 @@ export function useInvestigationChat(
     [isAiTyping, setClues]
   );
 
-  return {
-    messages,
-    isAiTyping,
-    sendMessage,
-  };
+  return { messages, isAiTyping, sendMessage };
 }

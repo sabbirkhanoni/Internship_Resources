@@ -81,7 +81,6 @@ Return a natural reply and structured JSON.
 User message:
 "${message}"
 `,
-
       config: {
         responseMimeType: "application/json",
         responseSchema: clueSchema,

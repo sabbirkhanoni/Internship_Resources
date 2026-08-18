@@ -10,40 +10,21 @@ import {
 
 import "leaflet/dist/leaflet.css";
 import { Candidate } from "@/types/investigation";
+import { FaMapMarkerAlt } from "react-icons/fa";
+import { renderToStaticMarkup } from "react-dom/server";
 
-interface MapPanelProps {
-  candidates: Candidate[];
-}
-
-function createMarkerIcon(
-  match: number,
-  active: boolean
-) {
+function createMarkerIcon() {
   return L.divIcon({
     className: "",
-    html: `
-      <div
-        style="
-          width: 42px;
-          height: 42px;
-          border-radius: 9999px;
-          background: ${active ? "#18181b" : "#71717a"
-      };
-          border: 3px solid white;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.25);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-size: 10px;
-          font-weight: 700;
-        "
-      >
-        ${match}%
-      </div>
-    `,
-    iconSize: [42, 42],
-    iconAnchor: [21, 21],
+    html: renderToStaticMarkup(
+      <FaMapMarkerAlt
+        size={32}
+        color="#ef4444"
+      />
+    ),
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
   });
 }
 
@@ -75,22 +56,8 @@ function MapPanel({
           <Marker
             key={candidate.id}
             position={candidate.position}
-            icon={createMarkerIcon(
-              candidate.match,
-              candidate.featured
-            )}
+            icon={createMarkerIcon()}
           >
-            <Popup>
-              <div className="min-w-[150px]">
-                <p className="font-semibold text-zinc-900">
-                  {candidate.name}
-                </p>
-
-                <p className="mt-1 text-xs text-zinc-500">
-                  AI Match: {candidate.match}%
-                </p>
-              </div>
-            </Popup>
           </Marker>
         ))}
       </MapContainer>
@@ -106,29 +73,6 @@ function MapPanel({
             Dhaka, Bangladesh
           </p>
         </div>
-      </div>
-
-      {/* Possible Locations */}
-      <div className="pointer-events-none absolute bottom-5 left-5 z-[1000]">
-        <div className="rounded-xl border border-white/70 bg-white/90 px-4 py-3 shadow-sm backdrop-blur">
-          <p className="text-[11px] text-zinc-400">
-            Possible locations
-          </p>
-
-          <p className="mt-0.5 text-sm font-semibold">
-            {candidates.length} candidates found
-          </p>
-        </div>
-      </div>
-
-      {/* Locate Button */}
-      <div className="absolute bottom-5 right-5 z-[1000]">
-        <button
-          type="button"
-          className="flex h-11 w-11 items-center justify-center rounded-xl border border-white bg-white text-lg shadow-md transition hover:bg-zinc-50"
-        >
-          ⊙
-        </button>
       </div>
     </section>
   );

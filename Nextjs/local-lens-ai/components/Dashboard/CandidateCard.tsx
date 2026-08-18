@@ -36,21 +36,6 @@ function CandidateCard({
                         {candidate.location}
                     </p>
                 </div>
-
-                <div className="text-right">
-                    <p className="text-lg font-bold">
-                        {candidate.match}%
-                    </p>
-
-                    <p
-                        className={`text-[9px] font-medium uppercase tracking-wider ${candidate.featured
-                                ? "text-zinc-500"
-                                : "text-zinc-400"
-                            }`}
-                    >
-                        match
-                    </p>
-                </div>
             </div>
 
             <div className="mt-4 flex flex-wrap gap-1.5 pl-8">

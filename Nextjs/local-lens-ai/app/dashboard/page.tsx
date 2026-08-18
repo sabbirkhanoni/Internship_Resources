@@ -1,12 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import dynamic from "next/dynamic";
 
 import ChatInput from "@/components/Dashboard/ChatInput";
 import DashHeader from "@/components/Dashboard/DashHeader";
 import InvestigationPanel from "@/components/Dashboard/InvestigationPanel";
 import { useInvestigationChat } from "@/hooks/useInvestigationChat";
-import type { Candidate } from "@/types/investigation";
+
+import type {
+  Candidate,
+  Clue,
+} from "@/types/investigation";
 
 const MapPanel = dynamic(
   () => import("@/components/Dashboard/MapPanel"),
@@ -23,13 +28,10 @@ const MapPanel = dynamic(
 );
 
 function Dashboard() {
-  const {
-    messages,
-    isAiTyping,
-    sendMessage,
-  } = useInvestigationChat();
+  // Real clues will come from Gemini
+  const [clues, setClues] = useState<Clue[]>([]);
 
-
+  // Temporary demo candidates
   const candidates: Candidate[] = [
     {
       id: "hatirjheel",
@@ -63,6 +65,12 @@ function Dashboard() {
     },
   ];
 
+  const {
+    messages,
+    isAiTyping,
+    sendMessage,
+  } = useInvestigationChat(setClues);
+
   return (
     <div className="h-screen overflow-hidden bg-[#f7f7f5] text-zinc-900">
       <DashHeader />
@@ -70,7 +78,7 @@ function Dashboard() {
       <main className="relative h-[calc(100vh-72px)]">
         <div className="grid h-full grid-cols-1 lg:grid-cols-[1.35fr_1fr]">
 
-          {/* Real Map */}
+          {/* Map */}
           <MapPanel candidates={candidates} />
 
           {/* AI Panel */}
@@ -79,6 +87,8 @@ function Dashboard() {
               messages={messages}
               isAiTyping={isAiTyping}
               onSendMessage={sendMessage}
+              clues={clues}
+              candidates={candidates}
             />
 
             <ChatInput

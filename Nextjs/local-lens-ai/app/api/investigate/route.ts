@@ -8,6 +8,10 @@ const ai = new GoogleGenAI({
 const clueSchema = {
   type: "object",
   properties: {
+    reply: {
+      type: "string",
+    },
+
     clues: {
       type: "array",
       items: {
@@ -16,18 +20,22 @@ const clueSchema = {
           id: {
             type: "string",
           },
+
           label: {
             type: "string",
           },
+
           confirmed: {
             type: "boolean",
           },
         },
+
         required: ["id", "label", "confirmed"],
       },
     },
   },
-  required: ["clues"],
+
+  required: ["reply", "clues"],
 };
 
 export async function POST(request: Request) {
@@ -53,18 +61,26 @@ export async function POST(request: Request) {
       contents: `
 You are a location investigation assistant.
 
-Analyze the user's memory and extract useful geographical clues.
+Analyze the user's message and extract only
+explicit geographical clues that may help identify
+a real-world location.
 
-User memory:
+Do not treat greetings, casual conversation,
+or irrelevant information as clues.
+
+Never invent or assume clues.
+
+If there is no useful location information,
+return an empty clues array.
+
+If the user is uncertain, confirmed should be false.
+If the user clearly states something, confirmed should be true.
+
+Return a natural reply and structured JSON.
+
+User message:
 "${message}"
-
-Rules:
-- Extract only useful location-related clues.
-- Do not invent information.
-- Use short human-readable labels.
-- If the user clearly states something, confirmed should be true.
-- Return only the structured JSON response.
-      `,
+`,
 
       config: {
         responseMimeType: "application/json",

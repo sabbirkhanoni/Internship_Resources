@@ -1,23 +1,16 @@
 
 'use client';
 
-import {
-  FormEvent,
-  KeyboardEvent,
-  useState,
-} from "react";
+import { FormEvent, KeyboardEvent, useState } from "react";
 
 interface ChatInputProps {
   onSend: (message: string) => void;
   disabled?: boolean;
 }
 
-function ChatInput({
-  onSend,
-  disabled = false,
-}: ChatInputProps) {
-  const [value, setValue] = useState("");
+function ChatInput({ onSend, disabled = false }: ChatInputProps) {
 
+  const [value, setValue] = useState("");
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -55,14 +48,6 @@ function ChatInput({
           onSubmit={handleSubmit}
           className="pointer-events-auto flex items-center gap-2 rounded-2xl border border-zinc-200 bg-white p-2 shadow-xl shadow-zinc-900/10"
         >
-          <button
-            type="button"
-            disabled={disabled}
-            className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-zinc-400 transition hover:bg-zinc-100 hover:text-zinc-900 disabled:opacity-40"
-          >
-            ＋
-          </button>
-
           <input
             type="text"
             value={value}

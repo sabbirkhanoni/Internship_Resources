@@ -1,21 +1,13 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-
 import ChatMessage from "./ChatMessage";
 import QuickReplies from "./QuickReplies";
 import ClueList from "./ClueList";
 import CandidateList from "./CandidateList";
 import TypingIndicator from "./TypingIndicator";
-
-import type {
-  ChatMessage as ChatMessageType,
-} from "../../types/chat";
-
-import type {
-  Clue,
-  Candidate,
-} from "../../types/investigation";
+import type { ChatMessage as ChatMessageType } from "../../types/chat";
+import type { Clue, Candidate } from "../../types/investigation";
 
 interface InvestigationPanelProps {
   messages: ChatMessageType[];
@@ -25,13 +17,8 @@ interface InvestigationPanelProps {
   candidates: Candidate[];
 }
 
-function InvestigationPanel({
-  messages,
-  isAiTyping,
-  onSendMessage,
-  clues,
-  candidates,
-}: InvestigationPanelProps) {
+function InvestigationPanel({ messages, isAiTyping, onSendMessage, clues, candidates }: InvestigationPanelProps) {
+
   const bottomRef = useRef<HTMLDivElement | null>(
     null
   );
@@ -48,27 +35,6 @@ function InvestigationPanel({
 
   return (
     <aside className="flex h-full min-h-0 flex-col border-l border-zinc-200 bg-white">
-
-      {/* Header */}
-      <div className="border-b border-zinc-100 px-6 py-3">
-        <div className="flex items-start justify-between">
-          <div>
-            <h2 className="text-sm font-semibold tracking-tight">
-              Let's find that place.
-            </h2>
-          </div>
-        </div>
-
-        <div className="flex items-center gap-3">
-          <div className="h-1 flex-1 overflow-hidden rounded-full bg-zinc-100">
-            <div className="h-full w-[20%] rounded-full bg-zinc-900 transition-all duration-500" />
-          </div>
-
-          <span className="whitespace-nowrap text-[11px] font-medium text-zinc-400">
-            {clues.length} clues
-          </span>
-        </div>
-      </div>
 
       {/* Conversation */}
       <div className="min-h-0 flex-1 overflow-y-auto px-6 py-6 pb-32">
@@ -105,7 +71,11 @@ function InvestigationPanel({
         )}
 
         {/* Possible Matches */}
-        <CandidateList candidates={candidates} />
+        {candidates.length > 0 && (
+          <div className="shrink-0 border-t border-zinc-200 bg-white">
+            <CandidateList candidates={candidates} />
+          </div>
+        )}
       </div>
     </aside>
   );

@@ -1,13 +1,7 @@
 "use client";
 
 import L from "leaflet";
-import {
-  MapContainer,
-  Marker,
-  Popup,
-  TileLayer,
-} from "react-leaflet";
-
+import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Candidate } from "@/types/investigation";
 import { FaMapMarkerAlt } from "react-icons/fa";
@@ -17,10 +11,7 @@ function createMarkerIcon() {
   return L.divIcon({
     className: "",
     html: renderToStaticMarkup(
-      <FaMapMarkerAlt
-        size={32}
-        color="#ef4444"
-      />
+      <FaMapMarkerAlt size={32} color="#ef4444" />
     ),
     iconSize: [32, 32],
     iconAnchor: [16, 32],
@@ -28,11 +19,8 @@ function createMarkerIcon() {
   });
 }
 
-function MapPanel({
-  candidates,
-}: {
-  candidates: Candidate[];
-}) {
+function MapPanel({ candidates } : { candidates: Candidate[] }) {
+
   const dhaka: [number, number] = [
     23.8103,
     90.4125,
